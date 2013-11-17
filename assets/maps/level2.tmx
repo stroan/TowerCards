@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="tile" tilewidth="40" tileheight="40">
+  <image source="../images/tile.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="2" name="tile2" tilewidth="40" tileheight="50">
+  <image source="../images/tile2.png" width="40" height="50"/>
+ </tileset>
+ <tileset firstgid="3" name="tiles" tilewidth="40" tileheight="40">
+  <image source="../images/tiles.png" width="400" height="400"/>
+ </tileset>
+ <imagelayer name="Image Layer 1" width="10" height="10">
+  <image source="../../../../../Downloads/9939-2010_02_MARCO_KNEELING_KATANA_DEFEND_POSE_00 (1).JPG"/>
+ </imagelayer>
+ <layer name="Tile Layer 1" width="10" height="10">
+  <data encoding="csv">
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3,3,3,3
+</data>
+ </layer>
+ <layer name="Tile Layer 2" width="10" height="10">
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,0,2,
+2,2,0,0,0,0,0,2,0,2,
+2,2,0,2,2,2,2,2,0,2,
+2,2,0,0,0,0,0,0,0,2,
+2,2,0,2,2,2,2,2,2,2,
+2,2,0,0,0,0,0,0,0,2,
+2,2,0,0,0,0,0,0,0,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="10" height="10" visible="0">
+  <object name="Foobar1" x="88" y="47" width="59" height="219"/>
+  <object x="89" y="49" width="222" height="25"/>
+  <object x="208" y="55" width="22" height="212"/>
+  <object x="289" y="50" width="25" height="224"/>
+  <object x="95" y="245" width="16" height="110"/>
+  <object x="87" y="330" width="226" height="20"/>
+  <object x="341" y="333">
+   <polyline points="0,0 -3,-38 -78,-36 -83,-240 -168,-241 -168,-32 -206,-33"/>
+  </object>
+ </objectgroup>
+</map>
