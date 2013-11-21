@@ -38,21 +38,15 @@ class GameState extends FlxState
 		add(tmap);
 		
 		var sheet:SpriteSheet = new SpriteSheet("assets/spritesheets/pawn.xml", "static");
-		
-		sheet.x = 60;
-		sheet.y = 60;
-		trace(tmap);
-		trace(tmap.tileLayers);
-		trace(tmap.tileLayers.get("Walls"));
+		sheet.x = 85;
+		sheet.y = 25;
 		tmap.tileLayers.get("Walls").add(sheet);
 		
-		/*_map = new FlxTilemap();
-		_map.loadMap(tmap.layerCSVs["Tile Layer 1"], "assets/images/tile.png", 0, 0, FlxTilemap.OFF, 0, 0);
-		//_map.loadMap("0,0,0", "assets/images/tile.png", 0, 0, FlxTilemap.OFF, 0, 0);
-		_map.x = 100;
-		_map.y = 100;
-		add(_map);*/
 		
+		var sheet2:SpriteSheet = new SpriteSheet("assets/spritesheets/pawn.xml", "static");
+		sheet2.x = 85;
+		sheet2.y = 285;
+		tmap.tileLayers.get("Walls").add(sheet2);
 		
 		super.create();
 	}

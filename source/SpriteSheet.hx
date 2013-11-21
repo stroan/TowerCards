@@ -26,7 +26,6 @@ class SpriteSheet extends FlxSprite
 	{
 		super();
 		description = getSheetDescription(filename);
-		trace(description.sourceImage);
 		this.loadGraphic(description.sourceImage, false, false, 
 						description.tileWidth, description.tileHeight);
 		this.frame = description.animations.get(animation).first();
