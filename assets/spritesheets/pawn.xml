@@ -1,0 +1,5 @@
+<spritesheet source="../images/pawn.png" tilewidth="30" tileheight="70" centerx="15" centery="55">
+	<animations>
+		<animation name="static">0</animation>
+	</animations>
+</spritesheet>

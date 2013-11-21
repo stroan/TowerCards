@@ -15,13 +15,13 @@ typedef Tileset = { imagePath : String, width : Int, height : Int, firstGid : In
 
 class TiledMap extends FlxGroup
 {
-	public var layerCSVs:Map<String, String>;
+	public var tileLayers:Map<String, TiledLayer>;
 	
 	public function new(mapLocation:String) 
 	{
 		super();
 		
-		layerCSVs = new Map<String, String>();
+		tileLayers = new Map<String, TiledLayer>();
 		
 		var tilesets = new Array<Tileset>();
 		var xml = Xml.parse(Assets.getText(mapLocation));
@@ -34,11 +34,12 @@ class TiledMap extends FlxGroup
 		
 		for (node in root.elements()) {
 			if (node.nodeName == "tileset") {
-				tilesets.push({ imagePath : appendPath(mapLocation, node.firstElement().get("source")),
+				tilesets.push({ imagePath : FormatUtils.concatPaths(mapLocation, node.firstElement().get("source")),
 								 width : Std.parseInt(node.get("tilewidth")),
 								 height : Std.parseInt(node.get("tileheight")),
 								 firstGid : Std.parseInt(node.get("firstgid")) } );
 			} else if (node.nodeName == "layer") {
+				var name = node.get("name");
 				var layerGroup = new TiledLayer(tileWidth, tileHeight);
 				var data = node.firstElement().firstChild().toString();
 				var rows = data.split("\n");
@@ -72,25 +73,8 @@ class TiledMap extends FlxGroup
 					y++;
 				}
 				add(layerGroup);
+				tileLayers.set(name, layerGroup);
 			}
 		}		
-	}
-	
-	private function appendPath(path1:String, path2:String) {
-		var path1Parts:Array<String> = path1.split("/");
-		var path2Parts:Array<String> = path2.split("/");
-		
-		path1Parts.pop();
-		for (part in path2Parts) {
-			if (part == ".") {
-				continue;
-			} else if (part == "..") {
-				path1Parts.pop();
-			} else {
-				path1Parts.push(part);
-			}
-		}
-		
-		return path1Parts.join("/");
 	}
 }

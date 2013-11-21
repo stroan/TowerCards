@@ -24,4 +24,8 @@ class TiledLayer extends FlxGroup
 		sprite.y = y * _tileHeight - (sprite.height - _tileHeight);
 		this.add(sprite);
 	}
+	
+	public override function update() {
+		this.sort();
+	}
 }

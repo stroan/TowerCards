@@ -37,6 +37,15 @@ class GameState extends FlxState
 		var tmap:TiledMap = new TiledMap("assets/maps/level.tmx");
 		add(tmap);
 		
+		var sheet:SpriteSheet = new SpriteSheet("assets/spritesheets/pawn.xml", "static");
+		
+		sheet.x = 60;
+		sheet.y = 60;
+		trace(tmap);
+		trace(tmap.tileLayers);
+		trace(tmap.tileLayers.get("Walls"));
+		tmap.tileLayers.get("Walls").add(sheet);
+		
 		/*_map = new FlxTilemap();
 		_map.loadMap(tmap.layerCSVs["Tile Layer 1"], "assets/images/tile.png", 0, 0, FlxTilemap.OFF, 0, 0);
 		//_map.loadMap("0,0,0", "assets/images/tile.png", 0, 0, FlxTilemap.OFF, 0, 0);
