@@ -37,6 +37,9 @@ class GameState extends FlxState
 		var tmap:TiledMap = new TiledMap("assets/maps/level.tmx");
 		add(tmap);
 		
+		
+		trace(tmap.tileLayers["Ground"].pathfind(21, 3, 1, 8));
+		
 		var sheet:SpriteSheet = new SpriteSheet("assets/spritesheets/pawn.xml", "static");
 		sheet.x = 85;
 		sheet.y = 25;
