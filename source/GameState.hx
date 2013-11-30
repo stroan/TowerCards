@@ -22,6 +22,9 @@ class GameState extends FlxState
 	private var _map:FlxTilemap;
 	private var _sprite:FlxSprite;
 	
+	private var _lastMouseX:Float;
+	private var _lastMouseY:Float;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -36,9 +39,6 @@ class GameState extends FlxState
 		
 		var tmap:TiledMap = new TiledMap("assets/maps/level.tmx");
 		add(tmap);
-		
-		
-		trace(tmap.tileLayers["Ground"].pathfind(21, 3, 1, 8));
 		
 		var sheet:SpriteSheet = new SpriteSheet("assets/spritesheets/pawn.xml", "static");
 		sheet.x = 85;
@@ -69,6 +69,20 @@ class GameState extends FlxState
 	override public function update():Void
 	{
 		super.update();
-	}	
+		
+		handleMapDrag();
+	}
+	
+	private function handleMapDrag():Void {
+		if (FlxG.mouse.justPressed()) {
+			_lastMouseX = FlxG.mouse.screenX;
+			_lastMouseY = FlxG.mouse.screenY;
+		} else if (FlxG.mouse.pressed()) {
+			FlxG.camera.scroll.x += _lastMouseX - FlxG.mouse.screenX;
+			FlxG.camera.scroll.y += _lastMouseY - FlxG.mouse.screenY;
+			_lastMouseX = FlxG.mouse.screenX;
+			_lastMouseY = FlxG.mouse.screenY;
+		}
+	}
 	
 }
