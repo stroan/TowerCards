@@ -5,6 +5,7 @@ import flash.geom.Rectangle;
 import flash.net.SharedObject;
 import org.flixel.FlxButton;
 import org.flixel.FlxG;
+import org.flixel.FlxGroup;
 import org.flixel.FlxPath;
 import org.flixel.FlxSave;
 import org.flixel.FlxSprite;
@@ -12,6 +13,7 @@ import org.flixel.FlxState;
 import org.flixel.FlxText;
 import org.flixel.FlxTilemap;
 import org.flixel.util.FlxMath;
+import org.flixel.util.FlxPoint;
 
 /**
  * ...
@@ -21,9 +23,13 @@ class GameState extends FlxState
 {
 	private var _map:FlxTilemap;
 	private var _sprite:FlxSprite;
+	private var _handContainer:HandContainer;
 	
 	private var _lastMouseX:Float;
 	private var _lastMouseY:Float;
+	
+	private var _player1:PlayerStatus;
+	private var _player2:PlayerStatus;
 	
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -37,6 +43,9 @@ class GameState extends FlxState
 		FlxG.mouse.show();
 		#end
 		
+		_player1 = new PlayerStatus(1);
+		_player2 = new PlayerStatus(2);
+		
 		var tmap:TiledMap = new TiledMap("assets/maps/level.tmx");
 		add(tmap);
 		
@@ -45,11 +54,14 @@ class GameState extends FlxState
 		sheet.y = 25;
 		tmap.tileLayers.get("Walls").add(sheet);
 		
-		
 		var sheet2:SpriteSheet = new SpriteSheet("assets/spritesheets/pawn.xml", "static");
 		sheet2.x = 85;
 		sheet2.y = 285;
 		tmap.tileLayers.get("Walls").add(sheet2);
+		
+		_handContainer = new HandContainer(new FlxPoint(640, 800));
+		_handContainer.layoutHand(_player1.Hand);
+		add(_handContainer);
 		
 		super.create();
 	}
